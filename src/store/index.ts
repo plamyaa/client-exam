@@ -1,9 +1,9 @@
 import { createStore } from "vuex";
+import news, { INewsState } from "./modules/news";
+export interface IState {
+  news: INewsState;
+}
 
 export default createStore({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  modules: { news },
 });

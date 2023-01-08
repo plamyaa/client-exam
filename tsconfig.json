@@ -34,7 +34,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/store/database.ts", "src/store/database.ts"  ],
   "exclude": [
     "node_modules"
   ]

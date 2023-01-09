@@ -1,9 +1,9 @@
 <template>
   <v-card class="mx-auto mb-5" max-width="380">
     <v-img :src="image_src" height="300px" />
-    <v-card-title> {{ title }}</v-card-title>
+    <p class="text-h5 mx-4">{{ title }}</p>
     <v-card-actions>
-      <v-btn color="orange lighten-2" text> Explore </v-btn>
+      <v-btn color="orange lighten-2" text> Подробнее </v-btn>
       <v-spacer></v-spacer>
     </v-card-actions>
   </v-card>

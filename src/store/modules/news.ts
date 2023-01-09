@@ -5,6 +5,7 @@ export interface INews {
   id: number;
   titie: string;
   text: string;
+  description: string;
   created_at: string;
   author_id: number;
   image_src: string;
@@ -12,6 +13,7 @@ export interface INews {
 
 export interface INewsState {
   data: INews[];
+  page: number;
 }
 
 const news = {
@@ -24,6 +26,9 @@ const news = {
   getters: {
     getNews(state: INewsState) {
       return state.data;
+    },
+    getNewsLen(state: INewsState) {
+      return state.data.length;
     },
   },
   mutations: {

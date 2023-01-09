@@ -8,6 +8,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { news as newsData } from "@/store/database";
+import { mapMutations } from "vuex";
 
 export default defineComponent({
   name: "App",
@@ -16,6 +18,14 @@ export default defineComponent({
     return {
       //
     };
+  },
+  methods: {
+    ...mapMutations({
+      setNews: "news/setNews",
+    }),
+  },
+  mounted() {
+    this.setNews(newsData);
   },
 });
 </script>

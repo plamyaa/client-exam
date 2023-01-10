@@ -5,7 +5,9 @@
     <v-spacer></v-spacer>
     <v-dialog v-model="dialog" max-width="500px">
       <template v-slot:activator="{ props }">
-        <v-btn color="primary" v-bind="props"> Подпишитесь на нас </v-btn>
+        <v-btn color="primary" outlined v-bind="props">
+          Подпишитесь на нас</v-btn
+        >
       </template>
 
       <v-card>
@@ -16,7 +18,16 @@
         </v-card-text>
         <v-card class="mx-5">
           <v-form @submit.prevent="handleSubcribe">
-            <v-text-field v-model="email" type="email" hide-details filled />
+            <v-text-field
+              v-model="email"
+              type="email"
+              hide-details
+              filled
+              label="Подпишитесь на нас!"
+              placeholder="example@gmail.com"
+              rounded
+              dense
+            />
           </v-form>
         </v-card>
         <v-card class="d-flex ma-5 flex-column flex-sm-row" flat>
@@ -34,7 +45,8 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from "@vue/runtime-core";
+export default defineComponent({
   name: "TheHeader",
   data() {
     return {
@@ -56,5 +68,5 @@ export default {
       this.dialog = false;
     },
   },
-};
+});
 </script>

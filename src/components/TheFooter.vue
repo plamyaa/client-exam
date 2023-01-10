@@ -39,7 +39,9 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from "@vue/runtime-core";
+
+export default defineComponent({
   name: "TheFooter",
   data() {
     return {
@@ -59,5 +61,5 @@ export default {
       }
     },
   },
-};
+});
 </script>

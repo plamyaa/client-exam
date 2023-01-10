@@ -1,5 +1,5 @@
 <template>
-  <v-container class="d-flex jjustify-space-between flex-wrap">
+  <v-container class="d-flex justify-space-around flex-wrap">
     <news-card
       v-for="item in news.slice(0, 6)"
       :key="item.id"

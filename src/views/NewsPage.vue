@@ -1,21 +1,23 @@
 <template>
-  <v-container class="d-flex jjustify-space-between flex-wrap">
-    <news-card
-      v-for="item in news.slice(page * 5, page * 5 + 5)"
-      :key="item.id"
-      :id="item.id"
-      :title="item.title"
-      :text="item.text"
-      :author_id="item.author_id"
-      :created_at="item.created_at"
-      :image_src="item.image_src"
-    />
-    <div>
+  <v-container class="d-flex justify-space-between flex-wrap">
+    <v-row>
+      <news-card
+        v-for="item in news.slice(page * 5, page * 5 + 5)"
+        :key="item.id"
+        :id="item.id"
+        :title="item.title"
+        :text="item.text"
+        :author_id="item.author_id"
+        :created_at="item.created_at"
+        :image_src="item.image_src"
+      />
+    </v-row>
+    <v-row class="d-flex justify-center mb-5">
       <v-btn @click="decrementPage" :disabled="page === 0">Назад</v-btn>
-      <v-btn @click="incrementPage" :disabled="newsLen / 5 === page + 1"
-        >Дальше</v-btn
-      >
-    </div>
+      <v-btn @click="incrementPage" :disabled="newsLen / 5 === page + 1">
+        Дальше
+      </v-btn>
+    </v-row>
   </v-container>
 </template>
 
@@ -34,10 +36,8 @@ export default {
   methods: {
     incrementPage() {
       this.page = this.page + 1;
-      console.log(this.newsLen / 5, this.page);
     },
     decrementPage() {
-      if (this.page === 0) return;
       this.page = this.page - 1;
     },
   },
@@ -49,5 +49,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped></style>

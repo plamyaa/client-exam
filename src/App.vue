@@ -10,26 +10,21 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { news as newsData } from "@/store/database";
 import { mapMutations } from "vuex";
 import TheFooter from "./components/TheFooter.vue";
 import TheHeader from "./components/TheHeader.vue";
-
+import { GET } from "@/api/axios-api";
 export default defineComponent({
   name: "App",
   components: { TheHeader, TheFooter },
-  data() {
-    return {
-      //
-    };
-  },
   methods: {
     ...mapMutations({
       setNews: "news/setNews",
     }),
   },
-  mounted() {
-    this.setNews(newsData);
+  async mounted() {
+    const { data } = await GET("/news");
+    this.setNews(data);
   },
 });
 </script>

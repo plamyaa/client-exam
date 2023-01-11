@@ -2,14 +2,6 @@
   <v-container class="d-flex justify-space-between flex-wrap flex-column">
     <p>Фильтры и сортировки:</p>
     <v-row class="mt-4 mx-0">
-      <!-- <v-select
-        v-model="date"
-        :items="['По убыванию', 'По возрастанию']"
-        label="Дата"
-        filled
-        class="col-5"
-        style="width: 100%"
-      /> -->
       <v-select
         v-model="author"
         :items="authors"
@@ -26,6 +18,7 @@
         :id="item.id"
         :title="item.title"
         :text="item.text"
+        :description="item.description"
         :author_id="item.author_id"
         :created_at="item.created_at"
         :image_src="item.image_src"
@@ -66,7 +59,7 @@ export default {
   },
 
   methods: {
-    sortNewsByDte() {
+    sortNewsByDate() {
       if (this.date === "По убыванию") {
         return this.news.sort((a, b) => b.created_at - a.created_at);
       } else if (this.date === "По возрастанию") {

@@ -1,10 +1,14 @@
 <template>
-  <v-card class="mx-auto mb-5" max-width="380">
-    <v-img :src="image_src" height="300px" />
-    <p class="text-h5 mx-4">{{ title }}</p>
+  <v-card class="mx-auto mb-5" max-width="430">
+    <v-img height="200" :src="image_src" cover class="text-white" />
+    <p class="text-h5 mx-4 mt-5">{{ title }}</p>
+    <p v-if="description" class="text-subtitle-1 ma-4 text-grey">
+      {{ description }}
+    </p>
+    <v-spacer></v-spacer>
     <v-card-actions>
       <router-link :to="`/newsPage/${id}`" class="text-decoration-none">
-        <v-btn color="orange lighten-2" text> Подробнее </v-btn>
+        <v-btn color="black lighten-2" text> Подробнее </v-btn>
       </router-link>
       <v-spacer></v-spacer>
     </v-card-actions>
@@ -28,6 +32,10 @@ export default defineComponent({
       type: String,
       default: "",
     },
+    description: {
+      type: String,
+      default: "",
+    },
     author_id: {
       type: Number,
       default: 0,
@@ -41,6 +49,5 @@ export default defineComponent({
       default: "",
     },
   },
-  methods: {},
 });
 </script>

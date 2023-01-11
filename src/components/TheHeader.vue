@@ -3,7 +3,7 @@
     <header-button />
   </v-toolbar>
   <v-toolbar color="grey d-flex" dark v-else>
-    <router-link to="/" class="ml-5 text-decoration-none">
+    <router-link to="/" class="text-decoration-none">
       <v-btn flat color="black">Главная</v-btn>
     </router-link>
     <router-link to="/news" class="text-decoration-none">
@@ -93,7 +93,6 @@ export default defineComponent({
       setAuth: "setAuth",
     }),
     handleSubcribe() {
-      console.log(this.width);
       if (!this.email.includes("@")) {
         alert("Пожалуйства введите корректный адрес вашей почты");
         return;

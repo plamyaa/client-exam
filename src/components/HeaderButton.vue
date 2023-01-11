@@ -1,17 +1,19 @@
 <template>
   <v-menu>
     <template v-slot:activator="{ props }">
-      <v-btn color="black" v-bind="props"> Меню </v-btn>
+      <v-btn color="black" v-bind="props">
+        <v-icon icon="mdi-menu" size="x-large"> </v-icon>
+      </v-btn>
     </template>
     <v-list>
       <v-list-item>
         <router-link to="/" class="text-decoration-none">
-          <v-btn flat>Главная</v-btn>
+          <v-btn flat class="text-black">Главная</v-btn>
         </router-link>
       </v-list-item>
       <v-list-item>
         <router-link to="/news" class="text-decoration-none">
-          <v-btn flat>Все новости</v-btn>
+          <v-btn flat class="text-black">Все новости</v-btn>
         </router-link>
       </v-list-item>
       <v-list-item>
@@ -19,12 +21,12 @@
           href="https://github.com/plamyaa/client-exam"
           class="text-decoration-none"
         >
-          <v-btn flat> GIT </v-btn>
+          <v-btn flat class="text-black"> GIT </v-btn>
         </a>
       </v-list-item>
       <v-list-item>
         <a href="/db.json" class="text-decoration-none">
-          <v-btn flat> JSON </v-btn>
+          <v-btn flat class="text-black"> JSON </v-btn>
         </a>
       </v-list-item>
       <v-list-item>

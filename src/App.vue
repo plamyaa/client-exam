@@ -24,10 +24,9 @@ export default defineComponent({
     }),
   },
   async mounted() {
-    const news = await GET("/news");
-    this.setNews(news.data);
-    const authors = await GET("/authors");
-    this.setAuthors(authors.data);
+    const { data } = await GET("/main.json");
+    this.setNews(data.news);
+    this.setAuthors(data.authors);
   },
 });
 </script>

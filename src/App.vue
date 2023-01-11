@@ -24,7 +24,7 @@ export default defineComponent({
     }),
   },
   async mounted() {
-    const { data } = await GET("/db.json");
+    const { data } = await GET("/main.json");
     this.setNews(data.news);
     this.setAuthors(data.authors);
   },

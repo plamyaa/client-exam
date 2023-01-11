@@ -23,6 +23,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapMutations } from "vuex";
 
 export default defineComponent({
   name: "AuthPage",
@@ -33,9 +34,13 @@ export default defineComponent({
     };
   },
   methods: {
+    ...mapMutations(["setAuth"]),
     handleSubmit() {
       if (this.login === "login" && this.password === "0000") {
         this.$router.push("/");
+        this.setAuth(true);
+      } else {
+        alert("Неправильный логин или пароль!");
       }
     },
   },

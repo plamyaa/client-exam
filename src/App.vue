@@ -20,11 +20,14 @@ export default defineComponent({
   methods: {
     ...mapMutations({
       setNews: "news/setNews",
+      setAuthors: "authors/setAuthors",
     }),
   },
   async mounted() {
-    const { data } = await GET("/news");
-    this.setNews(data);
+    const news = await GET("/news");
+    this.setNews(news.data);
+    const authors = await GET("/authors");
+    this.setAuthors(authors.data);
   },
 });
 </script>

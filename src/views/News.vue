@@ -14,7 +14,7 @@
       </v-col>
       <v-col cols="12" md="9" class="mx-auto" v-else>
         <v-text-field v-model="news.title" />
-        <v-img :src="news.image_src" class="my-5" />
+        <v-text-field v-model="news.image_src" />
         <v-textarea v-model="news.text" />
         <v-btn class="primary mt-5" @click="toggleEdit">
           Сохранить изменения
@@ -43,7 +43,7 @@ export default defineComponent({
   },
   mounted() {
     const id = Number(this.$route.params.id);
-    const news = this.getNewsById(id); 
+    const news = this.getNewsById(id);
     if (!news) return;
     this.news = news;
   },

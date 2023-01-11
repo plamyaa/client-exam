@@ -30,6 +30,9 @@ const news = {
     getNewsLen(state: INewsState) {
       return state.data.length;
     },
+    getNewsById: (state: INewsState) => (id: number) => {
+      return state.data.find((item) => item.id === id);
+    },
   },
   mutations: {
     setNews(state: INewsState, news: INews[]) {

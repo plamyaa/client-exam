@@ -1,13 +1,16 @@
 <template>
   <v-toolbar color="grey d-flex" dark>
-    <router-link to="/" class="ml-5">Главная</router-link>
-    <router-link to="/news" class="ml-5">Все новости</router-link>
+    <router-link to="/" class="ml-5 text-decoration-none">
+      <v-btn flat color="black">Главная</v-btn>
+    </router-link>
+    <router-link to="/news" class="text-decoration-none">
+      <v-btn flat color="black">Все новости</v-btn>
+    </router-link>
+    <v-btn><a href=""></a></v-btn>
     <v-spacer></v-spacer>
-    <v-dialog v-model="dialog" max-width="500px">
+    <v-dialog v-model="dialog" max-width="500px" v-if="!$store.state.isAuth">
       <template v-slot:activator="{ props }">
-        <v-btn color="primary" outlined v-bind="props">
-          Подпишитесь на нас</v-btn
-        >
+        <v-btn color="black" outlined v-bind="props">Подпишитесь на нас</v-btn>
       </template>
 
       <v-card>
@@ -41,11 +44,20 @@
         </v-card>
       </v-card>
     </v-dialog>
+    <router-link
+      v-if="!$store.state.isAuth"
+      to="/auth"
+      class="text-decoration-none"
+    >
+      <v-btn flat color="black">Войти</v-btn>
+    </router-link>
+    <v-btn v-else @click="toggleAuth">Выйти</v-btn>
   </v-toolbar>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
+import { mapMutations } from "vuex";
 export default defineComponent({
   name: "TheHeader",
   data() {
@@ -55,6 +67,9 @@ export default defineComponent({
     };
   },
   methods: {
+    ...mapMutations({
+      setAuth: "setAuth",
+    }),
     handleSubcribe() {
       if (!this.email.includes("@")) {
         alert("Пожалуйства введите корректный адрес вашей почты");
@@ -66,6 +81,9 @@ export default defineComponent({
         return;
       }
       this.dialog = false;
+    },
+    toggleAuth() {
+      this.setAuth(false);
     },
   },
 });

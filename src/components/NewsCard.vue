@@ -3,7 +3,9 @@
     <v-img :src="image_src" height="300px" />
     <p class="text-h5 mx-4">{{ title }}</p>
     <v-card-actions>
-      <v-btn color="orange lighten-2" text> Подробнее </v-btn>
+      <router-link :to="`/newsPage/${id}`" class="text-decoration-none">
+        <v-btn color="orange lighten-2" text> Подробнее </v-btn>
+      </router-link>
       <v-spacer></v-spacer>
     </v-card-actions>
   </v-card>

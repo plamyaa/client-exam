@@ -62,7 +62,10 @@
     >
       <v-btn flat color="black">Войти</v-btn>
     </router-link>
-    <v-btn v-else @click="toggleAuth">Выйти</v-btn>
+    <div v-else>
+      <v-btn>Михаил Сергеев</v-btn>
+      <v-btn @click="toggleAuth">Выйти</v-btn>
+    </div>
   </v-toolbar>
 </template>
 

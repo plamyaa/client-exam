@@ -58,7 +58,10 @@ export default defineComponent({
       const validation = this.email.split("@")[1];
       if (!validation) {
         alert("Пожалуйства введите корректный адрес вашей почты");
+        return;
       }
+      alert("Спасибо за подписку!");
+      this.email = "";
     },
   },
 });

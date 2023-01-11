@@ -1,12 +1,23 @@
 <template>
-  <v-toolbar color="grey d-flex" dark>
+  <v-toolbar color="grey d-flex" dark v-if="width === 'sm' || width === 'xs'">
+    <header-button />
+  </v-toolbar>
+  <v-toolbar color="grey d-flex" dark v-else>
     <router-link to="/" class="ml-5 text-decoration-none">
       <v-btn flat color="black">Главная</v-btn>
     </router-link>
     <router-link to="/news" class="text-decoration-none">
       <v-btn flat color="black">Все новости</v-btn>
     </router-link>
-    <v-btn><a href=""></a></v-btn>
+    <a
+      href="https://github.com/plamyaa/client-exam"
+      class="text-decoration-none"
+    >
+      <v-btn flat color="black"> GIT </v-btn>
+    </a>
+    <a href="/db.json" class="text-decoration-none">
+      <v-btn flat color="black"> JSON </v-btn>
+    </a>
     <v-spacer></v-spacer>
     <v-dialog v-model="dialog" max-width="500px" v-if="!$store.state.isAuth">
       <template v-slot:activator="{ props }">
@@ -58,19 +69,31 @@
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
 import { mapMutations } from "vuex";
+import { useDisplay } from "vuetify";
+import { computed } from "vue";
+import HeaderButton from "./HeaderButton.vue";
 export default defineComponent({
   name: "TheHeader",
+  components: { HeaderButton },
   data() {
     return {
       email: "",
       dialog: false,
     };
   },
+  setup() {
+    const { name } = useDisplay();
+    const width = computed(() => {
+      return name.value;
+    });
+    return { width };
+  },
   methods: {
     ...mapMutations({
       setAuth: "setAuth",
     }),
     handleSubcribe() {
+      console.log(this.width);
       if (!this.email.includes("@")) {
         alert("Пожалуйства введите корректный адрес вашей почты");
         return;
@@ -80,6 +103,8 @@ export default defineComponent({
         alert("Пожалуйства введите корректный адрес вашей почты");
         return;
       }
+      alert("Спасибо за подписку!");
+      this.email = "";
       this.dialog = false;
     },
     toggleAuth() {
